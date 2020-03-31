@@ -13,6 +13,7 @@ Telegram-Bot zum Managen des Minecraft-Servers in Kubernetes. Läuft als systemd
 /say <Nachricht> Sendet Nachricht per RCON<br>
 /msg <Spielername> <Nachricht> sendet Nachricht per RCON an gewünschten Spieler<br>
 /online Gibt aus, welche Spieler online sind (nutzt rcon-cli list command)<br>
+/server Gibt Informationen zum Server aus (MC-Version, Map, Server)
 
 ## ToDo
 /recreate<br>
