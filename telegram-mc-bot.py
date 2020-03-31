@@ -70,7 +70,7 @@ class TelegramBot:
     def say(self, update, context):
         """RCON say the user message."""
         update.message.reply_text('Sende Nachricht: ' + str(update.message.text).replace('/say', ''))
-        msg_text = 'rcon-cli --password XXXXXXXXXX say ' + str(update.message.text).replace('/say', '')
+        msg_text = 'rcon-cli --password ' + self.rcon_pw + ' say ' + str(update.message.text).replace('/say', '')
         say_cmd = ['/bin/sh', '-c', msg_text ]
         say_exec = stream(self.v1.connect_get_namespaced_pod_exec,
                 self.name, self.namespace, command=say_cmd,
@@ -83,7 +83,7 @@ class TelegramBot:
     def msg(self, update, context):
         """RCON say the user message."""
         update.message.reply_text('Sende Nachricht: ' + str(update.message.text).replace('/msg', ''))
-        msg_text = 'rcon-cli --password XXXXXXXXXX msg ' + str(update.message.text).replace('/msg', '')
+        msg_text = 'rcon-cli --password ' + self.rcon_pw + ' msg ' + str(update.message.text).replace('/msg', '')
         msg_cmd = ['/bin/sh', '-c', msg_text ]
         say_exec = stream(self.v1.connect_get_namespaced_pod_exec,
                 self.name, self.namespace, command=msg_cmd,
@@ -95,7 +95,7 @@ class TelegramBot:
 #----------------------------------------------------------------------
     def online(self, update, context):
         """Show online players"""
-        list_cmd = ['/bin/sh', '-c', 'rcon-cli --password XXXXXXXXXX list']
+        list_cmd = ['/bin/sh', '-c', 'rcon-cli --password ' + self.rcon_pw + ' list']
         online_exec = stream(self.v1.connect_post_namespaced_pod_exec,
                 self.name, self.namespace,
 		command=list_cmd,
@@ -115,7 +115,7 @@ class TelegramBot:
     def restart(self, update, context):
         """Restart the minecraft server."""
         update.message.reply_text('Server wird neugestartet...')
-        restart_cmd = ['/bin/sh', '-c',  'rcon-cli --password XXXXXXXXXX restart']
+        restart_cmd = ['/bin/sh', '-c',  'rcon-cli --password ' + self.rcon_pw + ' restart']
         restart_exec = stream(self.v1.connect_get_namespaced_pod_exec,
 		self.name, self.namespace, command=restart_cmd,
 	        stderr=True,
