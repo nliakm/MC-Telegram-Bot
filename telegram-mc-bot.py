@@ -23,6 +23,7 @@ class TelegramBot:
     # Enable logging
     #logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     #                    level=logging.INFO)
+#----------------------------------------------------------------------
     def rescanNamespace(self):
         self.mc_namespace_pod = self.v1.list_namespaced_pod("minecraft")
         self.name = self.mc_namespace_pod.items[0].metadata.name 
