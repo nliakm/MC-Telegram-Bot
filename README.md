@@ -1,5 +1,5 @@
 # MC-Telegram-Bot
-Telegram-Bot zum Managen des Minecraft-Servers in Kubernetes. Läuft als systemd-Dienst
+Telegram-Bot zum Managen des Minecraft-Servers in Kubernetes (https://github.com/helm/charts/tree/master/stable/minecraft). Läuft als systemd-Dienst
 
 ## Installation
 1. Python-Pakete installieren
